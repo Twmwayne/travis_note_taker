@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js"
   },
-  "author": "",
+  "author": "Travis Mendenhall",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4"
