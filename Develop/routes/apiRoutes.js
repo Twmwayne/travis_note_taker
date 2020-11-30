@@ -46,3 +46,31 @@ module.exports = function(app){
         // returns new note in JSON format.
         res.json(req.body);
     });
+    
+
+     // DELETE Method to delete note with specified ID
+     app.delete("/api/notes/:id", function(req, res){
+        
+        // Obtains id and converts to a string
+        let id = req.params.id.toString();
+        console.log(id);
+
+        // Goes through notesArray searching for matching ID
+        for (i=0; i < notesData.length; i++){
+           
+            if (notesData[i].id == id){
+                console.log("match!");
+                // responds with deleted note
+                res.send(notesData[i]);
+
+                // Removes the deleted note
+                notesData.splice(i,1);
+                break;
+            }
+        }
+
+        // Write notes data to database
+        writeToDB(notesData);
+
+    });
+};
